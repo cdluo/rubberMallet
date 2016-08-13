@@ -72,6 +72,7 @@ public final class Main {
     // Setup Spark Routes
     Spark.get("/home", new FrontHandler(), freeMarker);
     Spark.post("/topics", new TopicHandler());
+    Spark.post("/file", new FileHandler());
   }
 
   /**
@@ -114,6 +115,18 @@ public final class Main {
       }
       
       return toReturn;
+    }
+  }
+  
+  private class FileHandler implements Route {
+    @Override
+    public Object handle(Request req, Response res) {
+  
+      QueryParamsMap qm = req.queryMap();
+      File fileJSON = new File(qm.value("file"));
+      System.out.println(fileJSON.exists());
+      
+      return null;
     }
   }
 }
