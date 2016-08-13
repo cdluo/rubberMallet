@@ -17,10 +17,7 @@ public class TopicModeler {
     file=file1;
   }
   
-  /*
-   * accuracy: 1: min, 2: med, 3: max
-   */
-  public ArrayList<Topic> getTopics(int numTopics, int accuracy) throws IOException{
+  public ArrayList<Topic> getTopics(int numTopics, int iterations) throws IOException{
     
     // The Pipes we'll be using to parse the data.
     ArrayList<Pipe> pipeList = new ArrayList<Pipe>();
@@ -61,16 +58,8 @@ public class TopicModeler {
     // Run the model for X iterations (Recommended 1000 iterations)
     
     // Accuracy Code added in (for speed, since 1000 iterations takes a long time.)
-    int numIterations;
-    if(accuracy == 1){
-      numIterations = 100;
-    }else if(accuracy == 2){
-      numIterations = 500;
-    }else{
-      numIterations = 1000;
-    }
     
-    model.setNumIterations(numIterations);
+    model.setNumIterations(iterations);
     model.estimate();
 
     // Show the words and topics in the first instance

@@ -1,5 +1,90 @@
+@font-face {
+  font-family:Camingo;
+  src:url("Camingo.ttf");
+}
+
+@font-face {
+  font-family:Kelvetica;
+  src:url("Kelvetica.otf");
+}
+
 h1{
+	margin:0 0;
 	text-align:center;
+	font-family:Kelvetica;
+}
+
+#menu{
+	position:relative;
+	display:block;
+	margin: 0 auto;
+	width:500px;
+}
+
+#file-form{
+	position:absolute;
+	top:8px;
+	font-family:Helvetica;
+}
+
+.inputFile{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputFile+label{
+	font-size: 18px;
+	width:300px;
+	height:30px;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  cursor:pointer;
+  border-radius:8px;
+  text-align:center;
+}
+
+.inputFile:focus + label,
+.inputFile + label:hover {
+    background-color: red;
+}
+
+.numberInput{
+	position:absolute;
+	top:47px;
+	width:50px;
+	text-align:center;
+}
+
+#submit{
+	position:absolute;
+	right:0px;
+	width:150px;
+	height:100px;
+	display:block;
+	margin:10px auto;
+	font-family:Helvetica;
+	border:1px solid white;
+	color:white;
+	border-radius:8px;
+	background-color:black;
+}
+
+#submit:hover{
+	background-color: #4EF559;
+}
+
+button:focus {
+	outline:0;
+}
+
+.topic{
+	margin-left:20px;
+	font-family:Helvetica;
 }
 
 #loading{
@@ -18,14 +103,9 @@ h1{
 	background-color:#C4F0FF;
 }
 
-#file-form{
+#options{
 	position:relative;
 	display:block;
-	margin: 0 auto;
-	width:500px;
-}
-
-#submit{
-	display:block;
-	margin:0 auto;
+	margin:5px auto;
+	width:800px;
 }

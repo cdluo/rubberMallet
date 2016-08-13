@@ -5,11 +5,9 @@ var topics;
 
 $("#submit").click(function(){
 
-	console.log("Submitting...");
-
-	var fileVAL = "test.txt";
-	var numTopVAL = 10;
-	var accuracyVAL = 1;
+	var fileVAL = document.getElementById('file-select').files[0].name;
+	var numTopVAL = $("#numTops").val();
+	var accuracyVAL = $("#accuracy").val();
 
 	var data = {file:fileVAL, num:numTopVAL, acu:accuracyVAL};
 
@@ -80,6 +78,7 @@ $("#submit").click(function(){
 					.attr("x2", circles[jj].attr("cx"))
 					.attr("y2", circles[jj].attr("cy"));
 			}
+
 			topicDiv.appendChild(newTopic);
 		}
 	});
@@ -99,17 +98,10 @@ $('form').submit(function() {
 	// Create a new FormData object.
 	var formData = new FormData();
 
-	if (!file.type.match('image.*')) {
-    continue;
-  }
-
-  // Add the file to the request.
-  if (!file.type.match('.txt')) {
-    continue;
-  }
-
   formData.append('file', file, file.name);
 
   $.post("/file", formData, function(response) {
+
 	});
+
 });
