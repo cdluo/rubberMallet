@@ -7,16 +7,19 @@
 <div id = "topics">
 </div>
 
-<form id="file-form" action="/file" method="POST" target="hidden-iframe">
-  <input type="file" id="file-select" name="file"/>
-</form>
+<div id="menu">
+	<form id="file-form" action="/file" method="POST" target="hidden-iframe">
+	  <input type="file" id="file" name="file" class = "inputFile"/>
+	  <label for="file">Click to choose a file</label>
+	</form>
 
-<div id="options">
-	<input type="number" id="numTops"> Number of topics
-	<input type="number" id="accuracy"> Accuracy 1(worst) - 3 (best)
+	<div id="options">
+		<input type="number" id="numTops" class="numberInput"> <p style = "position:absolute; top:25px; left:60px; font-family:Helvetica"> Number of topics </p>
+		<input type="number" id="accuracy" class="numberInput" style = "top:84px"> <p style = "position:absolute; top:64px; left:60px; font-family:Helvetica"> Number of Iterations</p>
+	</div>
+
+	<button id="submit">Mallet</button>
 </div>
-
-<button id="submit">Submit</button>
 
 <iframe name="hidden-iframe" style="display: none;"></iframe>
 

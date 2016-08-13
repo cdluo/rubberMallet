@@ -6,9 +6,6 @@ var topics;
 $("#submit").click(function(){
 
 	var fileVAL = document.getElementById('file-select').files[0].name;
-	console.log(fileVAL);
-	// var numTopVAL = $("#name").val();
-	// var accuracyVAL = $("#accuracy").val();
 	var numTopVAL = $("#numTops").val();
 	var accuracyVAL = $("#accuracy").val();
 
@@ -33,7 +30,7 @@ $("#submit").click(function(){
 
 			var newTopic = document.createElement('p');
 			newTopic.innerHTML = topicString;
-			newTopic.style = "margin-left:20px";
+			newTopic.classList.add("topic");
 			topicDiv.appendChild(newTopic);
 		}
 	});
