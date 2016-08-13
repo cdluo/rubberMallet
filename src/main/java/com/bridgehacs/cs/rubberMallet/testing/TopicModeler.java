@@ -99,7 +99,7 @@ public class TopicModeler {
     
     // ArrayList of Topics to pass in
     ArrayList<Topic> topicList = new ArrayList<Topic>();
-    String[] topicBuffer = new String[5];
+    Pair<String, Double>[] topicBuffer = (Pair<String, Double>[]) new Pair[5];
     
     // Show top 5 words in topics with proportions for the first document
     for (int topic = 0; topic < numTopics; topic++) {
@@ -112,8 +112,9 @@ public class TopicModeler {
             IDSorter idCountPair = iterator.next();
             out.format("%s (%.0f) ", dataAlphabet.lookupObject(idCountPair.getID()), idCountPair.getWeight());
             
-            topicBuffer[rank] = dataAlphabet.lookupObject(idCountPair.getID()).toString();
-//            System.out.println(idCountPair.getWeight());
+            String value = dataAlphabet.lookupObject(idCountPair.getID()).toString();
+            Double weight = idCountPair.getWeight();
+            topicBuffer[rank] = new Pair<String, Double>(value, weight);
             rank++;
         }
         Topic t = new Topic(topicBuffer[0],topicBuffer[1],topicBuffer[2],topicBuffer[3],topicBuffer[4]);
