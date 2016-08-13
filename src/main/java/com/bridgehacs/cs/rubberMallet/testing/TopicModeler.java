@@ -21,11 +21,6 @@ public class TopicModeler {
    * accuracy: 1: min, 2: med, 3: max
    */
   public ArrayList<Topic> getTopics(int numTopics, int accuracy) throws IOException{
-    ///////////////////////////////////////////////////////////////
-    // Example from: http://mallet.cs.umass.edu/topics-devel.php //
-    ///////////////////////////////////////////////////////////////
-    
-    // Additional Notes by Chris Luo
     
     // The Pipes we'll be using to parse the data.
     ArrayList<Pipe> pipeList = new ArrayList<Pipe>();

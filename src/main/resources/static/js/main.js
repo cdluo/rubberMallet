@@ -12,18 +12,19 @@ $("#submit").click(function(){
 
 	$.post("/topics", data, function(response) {
 		topics = JSON.parse(response);
+		console.log(topics);
 	});
 
 	document.getElementById("loading").style.visibility = "visible";
 	var topicDiv = document.getElementById("topics");
 	topicDiv.innerHTML = "";
 
-	$(document).ajaxStop(function() {
+	$(document).one("ajaxStop", function() {
 		document.getElementById("loading").style.visibility = "hidden";
 
+		console.log(topics.length);
 		for(i=0; i<topics.length; i++){
 			var topic = topics[i];
-			console.log(topic);
 			var topicString = topic.w1 + "|" + topic.w2 + "|" + topic.w3 + "|" + topic.w4 + "|" + topic.w5;
 
 			var newTopic = document.createElement('p');
@@ -32,4 +33,5 @@ $("#submit").click(function(){
 			topicDiv.appendChild(newTopic);
 		}
 	});
+
 });
