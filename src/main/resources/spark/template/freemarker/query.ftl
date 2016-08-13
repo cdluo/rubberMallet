@@ -21,6 +21,14 @@
 	<button id="submit">Mallet</button>
 </div>
 
+<div style="position:absolute; top: 0%; width:100%; height: 20%; background-color:#6699CC; z-index:-1"></div>
+
+<div style="position:absolute; top: 0%; width:100%; height: 100%; background-color:#FF6633; z-index:-2"></div>
+
+<div style="position:absolute; bottom: 13.725%; width:100%; height: 3.75%; background-color:#003333; z-index:-1"></div>
+<div style="position:absolute; bottom: 6.625%; width:100%; height: 7.5%; background-color: #6699CC; z-index:-1"></div>
+<div style="position:absolute; bottom: 0%; width:100%; height: 6.625%; background-color: #97826B; z-index:-1"></div>
+
 <iframe name="hidden-iframe" style="display: none;"></iframe>
 
 </#assign>

@@ -5,7 +5,7 @@ var topics;
 
 $("#submit").click(function(){
 
-	var fileVAL = document.getElementById('file-select').files[0].name;
+	var fileVAL = document.getElementById('file').files[0].name;
 	var numTopVAL = $("#numTops").val();
 	var accuracyVAL = $("#accuracy").val();
 
