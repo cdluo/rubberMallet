@@ -41,7 +41,6 @@ public final class Main {
   }
 
   private void run() throws IOException {
-    
     runSparkServer();
   }
 
