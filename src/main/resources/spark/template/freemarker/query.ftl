@@ -1,6 +1,6 @@
 <#assign content>
 
-<h1> rubberMallet 
+<h1> RubberMallet 
 	<img src="http://www.picgifs.com/graphics/c/court/graphics-court-777227.gif" id="loading"></img>
 </h1>
 

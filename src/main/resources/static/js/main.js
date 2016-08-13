@@ -4,7 +4,7 @@ $("#submit").click(function(){
 
 	console.log("Submitting...");
 
-	var fileVAL = "SSGuide.txt";
+	var fileVAL = "ClintonDNC.txt";
 	var numTopVAL = 10;
 	var accuracyVAL = 1;
 
@@ -25,7 +25,7 @@ $("#submit").click(function(){
 		console.log(topics.length);
 		for(i=0; i<topics.length; i++){
 			var topic = topics[i];
-			var topicString = topic.w1 + "|" + topic.w2 + "|" + topic.w3 + "|" + topic.w4 + "|" + topic.w5;
+			var topicString = topic.w1 + ", " + topic.w2 + ", " + topic.w3 + ", " + topic.w4 + ", " + topic.w5;
 
 			var newTopic = document.createElement('p');
 			newTopic.innerHTML = topicString;
