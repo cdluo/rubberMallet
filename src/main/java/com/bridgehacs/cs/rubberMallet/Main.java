@@ -34,6 +34,7 @@ public final class Main {
   private String[] args;
   private static final Gson GSON = new Gson();
   private TopicModeler tm;
+  private File file;
   
 
   private Main(String[] args) {
@@ -98,9 +99,6 @@ public final class Main {
     public Object handle(Request req, Response res) {
       QueryParamsMap qm = req.queryMap();
       
-      String fileJSON = qm.value("file");
-      File file = new File(fileJSON);
-      System.out.println(fileJSON + " exists? " + file.exists());
       tm = new TopicModeler(file);
       
       int numTops = Integer.parseInt(qm.value("num"));
@@ -123,8 +121,9 @@ public final class Main {
     public Object handle(Request req, Response res) {
   
       QueryParamsMap qm = req.queryMap();
-      File fileJSON = new File(qm.value("file"));
-      System.out.println(fileJSON.exists());
+      System.out.println(qm.value("file"));
+      file = new File(qm.value("file"));
+      System.out.println(file.exists());
       
       return null;
     }

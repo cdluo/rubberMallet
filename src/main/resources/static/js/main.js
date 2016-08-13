@@ -5,13 +5,10 @@ var topics;
 
 $("#submit").click(function(){
 
-	console.log("Submitting...");
-
-	var fileVAL = "TrumpRNC.txt";
 	var numTopVAL = 10;
 	var accuracyVAL = 1;
 
-	var data = {file:fileVAL, num:numTopVAL, acu:accuracyVAL};
+	var data = {num:numTopVAL, acu:accuracyVAL};
 
 	$.post("/topics", data, function(response) {
 		topics = JSON.parse(response);
@@ -52,17 +49,10 @@ $('form').submit(function() {
 	// Create a new FormData object.
 	var formData = new FormData();
 
-	if (!file.type.match('image.*')) {
-    continue;
-  }
-
-  // Add the file to the request.
-  if (!file.type.match('.txt')) {
-    continue;
-  }
-
   formData.append('file', file, file.name);
 
   $.post("/file", formData, function(response) {
+
 	});
+
 });
