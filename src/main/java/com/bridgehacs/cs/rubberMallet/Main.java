@@ -5,14 +5,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.bridgehacs.cs.rubberMallet.testing.Testing;
+import com.bridgehacs.cs.rubberMallet.testing.TopicModeler;
 import com.bridgehacs.cs.rubberMallet.testing.Topic;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 
 import freemarker.template.Configuration;
 import spark.ModelAndView;
+import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
+import spark.Route;
 import spark.Spark;
 import spark.TemplateViewRoute;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -29,25 +32,17 @@ public final class Main {
   }
 
   private String[] args;
+  private static final Gson GSON = new Gson();
+  private TopicModeler tm;
+  
 
   private Main(String[] args) {
     this.args = args;
   }
 
   private void run() throws IOException {
-    File file = new File(args[0]);
-    System.out.println(file.exists());
     
-    Testing t = new Testing(args);
-    ArrayList<Topic> topics = new ArrayList<Topic>();
-    topics = t.getTopics(10,1);
-    
-    //Topics is an arraylist of Topics, which just have 5 fields for the strings.
-    for(Topic top: topics){
-      System.out.println(top.toString());
-    }
-    
-//    runSparkServer();
+    runSparkServer();
   }
 
   ///////////////
@@ -77,6 +72,7 @@ public final class Main {
 
     // Setup Spark Routes
     Spark.get("/home", new FrontHandler(), freeMarker);
+    Spark.post("/topics", new TopicHandler());
   }
 
   /**
@@ -90,6 +86,35 @@ public final class Main {
       Map<String, Object> variables = ImmutableMap.of("title",
           "rubberMallet");
       return new ModelAndView(variables, "query.ftl");
+    }
+  }
+  
+  /**
+   * Handles sending the topics to the front end.
+   * @author ChrisLuo
+   */
+  private class TopicHandler implements Route {
+    @Override
+    public Object handle(Request req, Response res) {
+      QueryParamsMap qm = req.queryMap();
+      
+      String fileJSON = qm.value("file");
+      File file = new File(fileJSON);
+      System.out.println(fileJSON + " exists? " + file.exists());
+      tm = new TopicModeler(file);
+      
+      int numTops = Integer.parseInt(qm.value("num"));
+      int accuracy = Integer.parseInt(qm.value("acu"));
+      
+      Object toReturn = null;
+      try {
+        toReturn = GSON.toJson(tm.getTopics(numTops, accuracy));
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+      
+      return toReturn;
     }
   }
 }

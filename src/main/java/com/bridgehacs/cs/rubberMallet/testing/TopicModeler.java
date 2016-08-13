@@ -9,12 +9,12 @@ import java.util.*;
 import java.util.regex.*;
 import java.io.*;
 
-public class Testing {
+public class TopicModeler {
 
-  private String[] args;
+  private File file;
   
-  public Testing(String[] args1){
-    args=args1;
+  public TopicModeler(File file1){
+    file=file1;
   }
   
   /*
@@ -45,7 +45,7 @@ public class Testing {
     InstanceList instances = new InstanceList (new SerialPipes(pipeList));
 
     // Read in file (first argument after ./run)
-    Reader fileReader = new InputStreamReader(new FileInputStream(new File(args[0])), "UTF-8");
+    Reader fileReader = new InputStreamReader(new FileInputStream(file), "UTF-8");
     instances.addThruPipe(new CsvIterator (fileReader, Pattern.compile("^(\\S*)[\\s,]*(\\S*)[\\s,]*(.*)$"),
                                            3, 2, 1)); // data, label, name fields
 
