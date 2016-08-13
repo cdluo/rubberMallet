@@ -51,7 +51,7 @@ $("#submit").click(function(){
 						.append("circle")
 						.attr("cx", xCoord)
 						.attr("cy", yCoord)
-						.attr("r", w.weight*4)
+						.attr("r", w.weight)
 						.style("fill", "white");
 					if (w.weight > maxWeight) { // code to update to largest bubble
 						maxCircle = bubble;
@@ -70,6 +70,7 @@ $("#submit").click(function(){
 			}
 			// plan: connect bubbles together
 			for (var jj = 0; jj < circles.length; jj++) {
+				circles[jj].attr("r", 30*circles[jj].attr("r")/maxWeight)
 				var line = svg
 					.append("line")
 					.style("stroke", "white")
