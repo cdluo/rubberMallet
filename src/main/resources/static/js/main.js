@@ -23,14 +23,62 @@ $("#submit").click(function(){
 	$(document).one("ajaxStop", function() {
 		document.getElementById("loading").style.visibility = "hidden";
 
+		var w=500,h=500,
+			svg=d3.select("#topics")
+				.append("svg")
+				.attr("width",w)
+				.attr("height",h);
 		console.log(topics.length);
 		for(i=0; i<topics.length; i++){
 			var topic = topics[i];
-			var topicString = topic.w1.value + ", " + topic.w2.value + ", " + topic.w3.value + ", " + topic.w4.value + ", " + topic.w5.value;
-
 			var newTopic = document.createElement('p');
-			newTopic.innerHTML = topicString;
-			newTopic.classList.add("topic");
+			var maxWeight = 0;
+			var maxCircle;
+			var circles = [];
+			for (var pair in topic) {
+				if (topic.hasOwnProperty(pair)) {
+					var w = topic[pair];
+					var topicString = w.value;
+					
+					newTopic.innerHTML += topicString;
+					newTopic.style = "margin-left:10px";
+					
+					
+					xCoord = 450*Math.random();
+					yCoord = 20*Math.random()+40*(i+1);
+					
+					var bubble = svg
+						.append("circle")
+						.attr("cx", xCoord)
+						.attr("cy", yCoord)
+						.attr("r", w.weight*4)
+						.style("fill", "white");
+					if (w.weight > maxWeight) { // code to update to largest bubble
+						maxCircle = bubble;
+						maxWeight = w.weight;
+					}
+					circles.push(bubble); // add to list
+					
+					var text1=svg
+						.append("text")
+						.text(topicString)
+						.style("font-size",5)
+						.attr("x",xCoord)
+						.attr("y",yCoord)
+						.attr("text-anchor", "middle");
+				}
+			}
+			// plan: connect bubbles together
+			for (var jj = 0; jj < circles.length; jj++) {
+				var line = svg
+					.append("line")
+					.style("stroke", "white")
+					.attr("x1", maxCircle.attr("cx"))
+					.attr("y1", maxCircle.attr("cy"))
+					.attr("x2", circles[jj].attr("cx"))
+					.attr("y2", circles[jj].attr("cy"));
+			}
+
 			topicDiv.appendChild(newTopic);
 		}
 	});
