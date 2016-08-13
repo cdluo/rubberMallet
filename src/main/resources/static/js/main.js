@@ -25,7 +25,7 @@ $("#submit").click(function(){
 		console.log(topics.length);
 		for(i=0; i<topics.length; i++){
 			var topic = topics[i];
-			var topicString = topic.w1 + ", " + topic.w2 + ", " + topic.w3 + ", " + topic.w4 + ", " + topic.w5;
+			var topicString = topic.w1.value + ", " + topic.w2.value + ", " + topic.w3.value + ", " + topic.w4.value + ", " + topic.w5.value;
 
 			var newTopic = document.createElement('p');
 			newTopic.innerHTML = topicString;
