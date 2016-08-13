@@ -2,9 +2,11 @@ package com.bridgehacs.cs.rubberMallet;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.bridgehacs.cs.rubberMallet.testing.Testing;
+import com.bridgehacs.cs.rubberMallet.testing.Topic;
 import com.google.common.collect.ImmutableMap;
 
 import freemarker.template.Configuration;
@@ -37,7 +39,13 @@ public final class Main {
     System.out.println(file.exists());
     
     Testing t = new Testing(args);
-    t.doExample();
+    ArrayList<Topic> topics = new ArrayList<Topic>();
+    topics = t.getTopics(10,1);
+    
+    //Topics is an arraylist of Topics, which just have 5 fields for the strings.
+    for(Topic top: topics){
+      System.out.println(top.toString());
+    }
     
 //    runSparkServer();
   }
