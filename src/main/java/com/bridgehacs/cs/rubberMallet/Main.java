@@ -99,6 +99,9 @@ public final class Main {
     public Object handle(Request req, Response res) {
       QueryParamsMap qm = req.queryMap();
       
+      file = new File(qm.value("file"));
+      System.out.println(file.exists());
+      
       tm = new TopicModeler(file);
       
       int numTops = Integer.parseInt(qm.value("num"));
@@ -121,9 +124,7 @@ public final class Main {
     public Object handle(Request req, Response res) {
   
       QueryParamsMap qm = req.queryMap();
-      System.out.println(qm.value("file"));
       file = new File(qm.value("file"));
-      System.out.println(file.exists());
       
       return null;
     }

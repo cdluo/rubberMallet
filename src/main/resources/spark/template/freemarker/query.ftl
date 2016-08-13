@@ -9,8 +9,12 @@
 
 <form id="file-form" action="/file" method="POST" target="hidden-iframe">
   <input type="file" id="file-select" name="file"/>
-  <button type="submit" id="upload-button">Upload</button>
 </form>
+
+<div id="options">
+	<input type="number" id="numTops"> Number of topics
+	<input type="number" id="accuracy"> Accuracy 1(worst) - 3 (best)
+</div>
 
 <button id="submit">Submit</button>
 

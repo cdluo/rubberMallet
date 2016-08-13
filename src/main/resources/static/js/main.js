@@ -5,10 +5,14 @@ var topics;
 
 $("#submit").click(function(){
 
-	var numTopVAL = 10;
-	var accuracyVAL = 1;
+	var fileVAL = document.getElementById('file-select').files[0].name;
+	console.log(fileVAL);
+	// var numTopVAL = $("#name").val();
+	// var accuracyVAL = $("#accuracy").val();
+	var numTopVAL = $("#numTops").val();
+	var accuracyVAL = $("#accuracy").val();
 
-	var data = {num:numTopVAL, acu:accuracyVAL};
+	var data = {file:fileVAL, num:numTopVAL, acu:accuracyVAL};
 
 	$.post("/topics", data, function(response) {
 		topics = JSON.parse(response);
@@ -29,7 +33,7 @@ $("#submit").click(function(){
 
 			var newTopic = document.createElement('p');
 			newTopic.innerHTML = topicString;
-			newTopic.style = "margin-left:10px";
+			newTopic.style = "margin-left:20px";
 			topicDiv.appendChild(newTopic);
 		}
 	});
