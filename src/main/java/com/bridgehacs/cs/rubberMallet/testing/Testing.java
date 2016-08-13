@@ -1,6 +1,5 @@
 package com.bridgehacs.cs.rubberMallet.testing;
 
-import cc.mallet.util.*;
 import cc.mallet.types.*;
 import cc.mallet.pipe.*;
 import cc.mallet.pipe.iterator.*;
@@ -52,7 +51,7 @@ public class Testing {
 
     // Run the model for 50 iterations and stop (this is for testing only, 
     //  for real applications, use 1000 to 2000 iterations)
-    model.setNumIterations(50);
+    model.setNumIterations(1000);
     model.estimate();
 
     // Show the words and topics in the first instance

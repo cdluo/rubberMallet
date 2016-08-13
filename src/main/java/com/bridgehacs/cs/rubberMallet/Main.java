@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import com.bridgehacs.cs.rubberMallet.testing.Testing;
 import com.google.common.collect.ImmutableMap;
 
 import freemarker.template.Configuration;
@@ -32,9 +33,13 @@ public final class Main {
   }
 
   private void run() throws IOException {
-    System.out.println("Hello World");
+    File file = new File(args[0]);
+    System.out.println(file.exists());
     
-    runSparkServer();
+    Testing t = new Testing(args);
+    t.doExample();
+    
+//    runSparkServer();
   }
 
   ///////////////
