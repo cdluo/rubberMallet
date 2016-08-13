@@ -8,6 +8,7 @@ import java.util.Map;
 import com.bridgehacs.cs.rubberMallet.testing.Testing;
 import com.bridgehacs.cs.rubberMallet.testing.Topic;
 import com.google.common.collect.ImmutableMap;
+import com.google.gson.Gson;
 
 import freemarker.template.Configuration;
 import spark.ModelAndView;
@@ -43,10 +44,11 @@ public final class Main {
     topics = t.getTopics(10,1);
     
     //Topics is an arraylist of Topics, which just have 5 fields for the strings.
-    for(Topic top: topics){
+    /*for(Topic top: topics){
       System.out.println(top.toString());
-    }
-    
+    }*/
+    String json = new Gson().toJson(topics);
+    System.out.println(json);
 //    runSparkServer();
   }
 
