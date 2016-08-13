@@ -40,12 +40,12 @@ $("#submit").click(function(){
 					var w = topic[pair];
 					var topicString = w.value;
 					
-					newTopic.innerHTML += topicString;
+					newTopic.innerHTML += topicString + " ";
 					newTopic.style = "margin-left:10px";
 					
 					
 					xCoord = 450*Math.random();
-					yCoord = 20*Math.random()+40*(i+1);
+					yCoord = 450*Math.random();
 					
 					var bubble = svg
 						.append("circle")
@@ -62,7 +62,7 @@ $("#submit").click(function(){
 					var text1=svg
 						.append("text")
 						.text(topicString)
-						.style("font-size",5)
+						.style("font-size",15)
 						.attr("x",xCoord)
 						.attr("y",yCoord)
 						.attr("text-anchor", "middle");
