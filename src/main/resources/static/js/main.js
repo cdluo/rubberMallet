@@ -62,7 +62,7 @@ $("#submit").click(function(){
 					var text1=svg
 						.append("text")
 						.text(topicString)
-						.style("font-size",5)
+						.style("font-size",8)
 						.attr("x",xCoord)
 						.attr("y",yCoord)
 						.attr("text-anchor", "middle");
